@@ -145,15 +145,43 @@
   <div class="category-title">分类</div>
   <div class="category-list">
     
+      <a class="category-item" href="#Latex">
+        <span class="category-name">Latex</span>
+        <span class="category-size">( 1 )</span>
+      </a>
+    
       <a class="category-item" href="#hexo">
         <span class="category-name">hexo</span>
+        <span class="category-size">( 1 )</span>
+      </a>
+    
+      <a class="category-item" href="#机器学习">
+        <span class="category-name">机器学习</span>
         <span class="category-size">( 1 )</span>
       </a>
     
   </div>
 </section>
 
-  <ul class="list-post"><li id="hexo" class="item-category-name item-title item-title-0">
+  <ul class="list-post"><li id="Latex" class="item-category-name item-title item-title-0">
+  <!--
+    <a href="" class="text-year">
+   -->
+    Latex
+    <span class="category-count">( 1 )</span>
+  <!--
+  </a>
+   -->
+</li>
+<li class="item-post item">
+  <span class="post-date">11-07</span>
+
+  
+  <a class="post-title" href="/2020/11/07/Latex/">Latex</a>
+
+
+</li>
+<li id="hexo" class="item-category-name item-title item-title-1">
   <!--
     <a href="" class="text-year">
    -->
@@ -168,6 +196,24 @@
 
   
   <a class="post-title" href="/2020/11/06/studyHexo/">github+hexo+fexo创建个人博客</a>
+
+
+</li>
+<li id="机器学习" class="item-category-name item-title item-title-2">
+  <!--
+    <a href="" class="text-year">
+   -->
+    机器学习
+    <span class="category-count">( 1 )</span>
+  <!--
+  </a>
+   -->
+</li>
+<li class="item-post item">
+  <span class="post-date">11-07</span>
+
+  
+  <a class="post-title" href="/2020/11/07/SVM/">SVM</a>
 
 
 </li>
@@ -278,5 +324,20 @@
   }
 </script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

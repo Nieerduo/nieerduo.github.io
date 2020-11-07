@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 
 
-  <html class="light page-page">
+  <html class="light page-host">
 
 
 <head>
   <meta charset="utf-8">
   
-  <title>project | 两只耳朵</title>
+  <title>SVM | 两只耳朵</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="两只耳朵,前端,设计,Hexo主题,前端开发,用户体验,设计,frontend,design,nodejs,JavaScript" />
+    <meta name="keywords" content="支持向量机,分类，凸二次优化," />
   
 
-  <meta name="description" content="hello project">
-<meta property="og:type" content="website">
-<meta property="og:title" content="project">
-<meta property="og:url" content="http://example.com/project/index.html">
+  <meta name="description" content="支持向量机了解SVMSVM，全称support vector machine，中文为支持向量机。是一种二类分类模型，其基本模型定义为特征空间上的间隔最大的线性分类器，其学习策略便是间隔最大化，最终转化为一个凸二次规划问题的求解。   1.1分类标准的起源：逻辑回归（Logistic回归）先说说什么是线性分类器  给定一些数据点，他们分别属于两个不同的类，现在要找到一个线性分类器把这些数据分成两类。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVM">
+<meta property="og:url" content="http://example.com/2020/11/07/SVM/index.html">
 <meta property="og:site_name" content="两只耳朵">
-<meta property="og:description" content="hello project">
+<meta property="og:description" content="支持向量机了解SVMSVM，全称support vector machine，中文为支持向量机。是一种二类分类模型，其基本模型定义为特征空间上的间隔最大的线性分类器，其学习策略便是间隔最大化，最终转化为一个凸二次规划问题的求解。   1.1分类标准的起源：逻辑回归（Logistic回归）先说说什么是线性分类器  给定一些数据点，他们分别属于两个不同的类，现在要找到一个线性分类器把这些数据分成两类。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-06T06:43:27.000Z">
-<meta property="article:modified_time" content="2020-11-06T06:49:19.419Z">
+<meta property="og:image" content="http://example.com/images/SVM/logistic.jpg">
+<meta property="article:published_time" content="2020-11-07T06:01:49.000Z">
+<meta property="article:modified_time" content="2020-11-07T07:54:45.440Z">
 <meta property="article:author" content="两只耳朵呀">
-<meta property="article:tag" content="nieerduo,博客">
+<meta property="article:tag" content="支持向量机,分类，凸二次优化">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/SVM/logistic.jpg">
 
   
 
@@ -127,20 +129,20 @@
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hello-project"><span class="toc-text">hello project</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="toc-text">支持向量机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3SVM"><span class="toc-text">了解SVM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E5%88%86%E7%B1%BB%E6%A0%87%E5%87%86%E7%9A%84%E8%B5%B7%E6%BA%90%EF%BC%9A%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%EF%BC%88Logistic%E5%9B%9E%E5%BD%92%EF%BC%89"><span class="toc-text">1.1分类标准的起源：逻辑回归（Logistic回归）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%9C%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E7%96%91%E9%97%AE"><span class="toc-text">存在的一些疑问</span></a></li></ol></li></ol>
   </div>
 
 
 
 <div class="content content-post CENTER">
-   <article id="page-" class="article article-type-page" itemprop="blogPost">
+   <article id="host-SVM" class="article article-type-host" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">project</h1>
+    <h1 class="post-title">SVM</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2020.11.06</span>
+        <span>2020.11.07</span>
       </span>
 
       
@@ -151,6 +153,11 @@
       
 
       
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+  </span>
+
 
 
       
@@ -168,7 +175,19 @@
 
   <div class="article-content">
     
-      <h1 id="hello-project"><a href="#hello-project" class="headerlink" title="hello project"></a>hello project</h1>
+      <h1 id="支持向量机"><a href="#支持向量机" class="headerlink" title="支持向量机"></a>支持向量机</h1><h2 id="了解SVM"><a href="#了解SVM" class="headerlink" title="了解SVM"></a>了解SVM</h2><p>SVM，全称support vector machine，中文为支持向量机。是一种二类分类模型，其基本模型定义为特征空间上的间隔最大的<strong>线性分类器</strong>，其学习策略便是间隔最大化，最终转化为一个<strong>凸二次规划问题的求解</strong>。  </p>
+<h3 id="1-1分类标准的起源：逻辑回归（Logistic回归）"><a href="#1-1分类标准的起源：逻辑回归（Logistic回归）" class="headerlink" title="1.1分类标准的起源：逻辑回归（Logistic回归）"></a>1.1分类标准的起源：逻辑回归（Logistic回归）</h3><p>先说说什么是<strong>线性分类器</strong></p>
+<blockquote>
+<p>给定一些数据点，他们分别属于两个不同的类，现在要找到一个线性分类器把这些数据分成两类。若用x表示数据点，用y表示类别（y可以取1或1，分别代表两个不同的类），一个线性分类器的<strong>学习目标</strong>便是要<strong>在n维数据空间中吵到一个超平面（hyper plane）</strong>,这个超平面的方程可以表示为（$w^T$中的T代表装置）：<br>$$w^Tx+b=0$$  </p>
+</blockquote>
+<p>y即类别为什么取1或-1呢？这就要从Logistic回归说起了。  </p>
+<p>Logistic回归目的是从特征学习出一个0/1分类模型，而这个模型是将特征的线性组合作为自变量，由于自变量的取值范围是负无穷到正无穷。因此，使用logistic函数（或称作sigmoid函数）将自变量映射到（0，1）上，映射后的值被认为是属于y=1的概率<br>假设函数<br>$$h_\theta (x)=g(\theta ^T x)=\frac{1}{1+e^-\theta ^T x},$$<br>其中x是n维特征向量，函数g就是logistic函数。<br>而$g(z)=\frac{1}{1+e^-z}$的图像是：<br><img src="/images/SVM/logistic.jpg" alt="线性回归"><br>可以看到，将无穷映射到了（0，1）.</p>
+<h2 id="存在的一些疑问"><a href="#存在的一些疑问" class="headerlink" title="存在的一些疑问"></a>存在的一些疑问</h2><ul>
+<li>什么是凸二次规划问题</li>
+<li>什么是超平面</li>
+<li>logistic函数是如何将负无穷到正无穷的自变量映射到（0，1）上的  </li>
+</ul>
+
     
   </div>
 
@@ -179,10 +198,10 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="hide pull-left" href="/">
+    <a class="show pull-left" href="/2020/11/07/markdown/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="hide pull-right" href="/">
+    <a class="show pull-right" href="/2020/11/07/Latex/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
@@ -263,7 +282,7 @@
 
 
   
-      <div class="fexo-comments comments-page">
+      <div class="fexo-comments comments-host">
     
 
     
