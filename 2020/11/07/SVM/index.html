@@ -24,7 +24,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/SVM/logistic.jpg">
 <meta property="article:published_time" content="2020-11-07T06:01:49.000Z">
-<meta property="article:modified_time" content="2020-11-07T07:54:45.440Z">
+<meta property="article:modified_time" content="2020-11-07T13:15:02.587Z">
 <meta property="article:author" content="两只耳朵呀">
 <meta property="article:tag" content="支持向量机,分类，凸二次优化">
 <meta name="twitter:card" content="summary">
@@ -181,10 +181,13 @@
 <p>给定一些数据点，他们分别属于两个不同的类，现在要找到一个线性分类器把这些数据分成两类。若用x表示数据点，用y表示类别（y可以取1或1，分别代表两个不同的类），一个线性分类器的<strong>学习目标</strong>便是要<strong>在n维数据空间中吵到一个超平面（hyper plane）</strong>,这个超平面的方程可以表示为（$w^T$中的T代表装置）：<br>$$w^Tx+b=0$$  </p>
 </blockquote>
 <p>y即类别为什么取1或-1呢？这就要从Logistic回归说起了。  </p>
-<p>Logistic回归目的是从特征学习出一个0/1分类模型，而这个模型是将特征的线性组合作为自变量，由于自变量的取值范围是负无穷到正无穷。因此，使用logistic函数（或称作sigmoid函数）将自变量映射到（0，1）上，映射后的值被认为是属于y=1的概率<br>假设函数<br>$$h_\theta (x)=g(\theta ^T x)=\frac{1}{1+e^-\theta ^T x},$$<br>其中x是n维特征向量，函数g就是logistic函数。<br>而$g(z)=\frac{1}{1+e^-z}$的图像是：<br><img src="/images/SVM/logistic.jpg" alt="线性回归"><br>可以看到，将无穷映射到了（0，1）.</p>
+<p>Logistic回归目的是从特征学习出一个0/1分类模型，而这个模型是将特征的线性组合作为自变量，由于自变量的取值范围是负无穷到正无穷。因此，使用logistic函数（或称作sigmoid函数）将自变量映射到（0，1）上，映射后的值被认为是属于y=1的概率<br>假设函数<br>$$h_\theta (x)=g(\theta ^T x)=\frac{1}{1+e^{-\theta ^T x}},$$<br>其中x是n维特征向量，函数g就是logistic函数。<br>而$g(z)=\frac{1}{1+e^{-z}}$的图像是：<br><img src="/images/SVM/logistic.jpg" alt="线性回归"><br>可以看到，将无穷映射到了（0，1），假设函数就是特征属于y=1的概率<br>$$P(y=1|x;\theta)=h_\theta (x)$$<br>$$P(y=0|x;\theta)=1-h_\theta (x)$$<br>所以，要判别新特征属于哪个类时，只需求$h_\theta (x)$即可，若$h_\theta (x)$大于0.5就是y=1的类，反之属于y=0的类</p>
 <h2 id="存在的一些疑问"><a href="#存在的一些疑问" class="headerlink" title="存在的一些疑问"></a>存在的一些疑问</h2><ul>
 <li>什么是凸二次规划问题</li>
-<li>什么是超平面</li>
+<li>什么是超平面？<blockquote>
+<p>n维空间中的超平面由下面的方程确定：$$w^T+b=0$$<br>其中，w和x都是n维列向量，x维平面上的点，w为平面上的法向量，决定了超平面的方向。T表装置</p>
+</blockquote>
+</li>
 <li>logistic函数是如何将负无穷到正无穷的自变量映射到（0，1）上的  </li>
 </ul>
 
