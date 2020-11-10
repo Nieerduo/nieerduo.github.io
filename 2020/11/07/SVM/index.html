@@ -24,7 +24,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/images/SVM/logistic.jpg">
 <meta property="article:published_time" content="2020-11-07T06:01:49.000Z">
-<meta property="article:modified_time" content="2020-11-07T13:15:02.587Z">
+<meta property="article:modified_time" content="2020-11-09T11:21:46.824Z">
 <meta property="article:author" content="两只耳朵呀">
 <meta property="article:tag" content="支持向量机,分类，凸二次优化">
 <meta name="twitter:card" content="summary">
@@ -181,7 +181,7 @@
 <p>给定一些数据点，他们分别属于两个不同的类，现在要找到一个线性分类器把这些数据分成两类。若用x表示数据点，用y表示类别（y可以取1或1，分别代表两个不同的类），一个线性分类器的<strong>学习目标</strong>便是要<strong>在n维数据空间中吵到一个超平面（hyper plane）</strong>,这个超平面的方程可以表示为（$w^T$中的T代表装置）：<br>$$w^Tx+b=0$$  </p>
 </blockquote>
 <p>y即类别为什么取1或-1呢？这就要从Logistic回归说起了。  </p>
-<p>Logistic回归目的是从特征学习出一个0/1分类模型，而这个模型是将特征的线性组合作为自变量，由于自变量的取值范围是负无穷到正无穷。因此，使用logistic函数（或称作sigmoid函数）将自变量映射到（0，1）上，映射后的值被认为是属于y=1的概率<br>假设函数<br>$$h_\theta (x)=g(\theta ^T x)=\frac{1}{1+e^{-\theta ^T x}},$$<br>其中x是n维特征向量，函数g就是logistic函数。<br>而$g(z)=\frac{1}{1+e^{-z}}$的图像是：<br><img src="/images/SVM/logistic.jpg" alt="线性回归"><br>可以看到，将无穷映射到了（0，1），假设函数就是特征属于y=1的概率<br>$$P(y=1|x;\theta)=h_\theta (x)$$<br>$$P(y=0|x;\theta)=1-h_\theta (x)$$<br>所以，要判别新特征属于哪个类时，只需求$h_\theta (x)$即可，若$h_\theta (x)$大于0.5就是y=1的类，反之属于y=0的类</p>
+<p>Logistic回归目的是从特征学习出一个0/1分类模型，而这个模型是将特征的线性组合作为自变量，由于自变量的取值范围是负无穷到正无穷。因此，使用logistic函数（或称作sigmoid函数）将自变量映射到（0，1）上，映射后的值被认为是属于y=1的概率<br>假设函数<br>$$h_\theta (x)=g(\theta ^T x)=\frac{1}{1+e^{-\theta ^T x}},$$<br>其中x是n维特征向量，函数g就是logistic函数。<br>而$g(z)=\frac{1}{1+e^{-z}}$的图像是：<br><img src="/images/SVM/logistic.jpg" alt="线性回归"><br>可以看到，将无穷映射到了（0，1），假设函数就是特征属于y=1的概率<br>$$P(y=1|x;\theta)=h_\theta (x)$$<br>$$P(y=0|x;\theta)=1-h_\theta (x)$$<br>&emsp;&emsp;所以，要判别新特征属于哪个类时，只需求$h_\theta (x)$即可，若$h_\theta (x)$大于0.5就是y=1的类，反之属于y=0的类。<br>&emsp;&emsp;此外，$h_\theta (x)$只和$\theta ^T x$有关，$\theta ^T x &gt; 0$,那么$h_\theta (x)&gt;0.5$,而$g(z)$只是用来映射，真实的类别确定权还是在于$\theta ^T x$。再者，当$\theta ^T x \gg 0$时，$h_\theta (x)=1$，反之$h_\theta (x)=0$。如果我们只从$\theta ^T x$出发，希望模型达到的目标就是让训练数据中$y=1$的特征$\theta ^T x \gg 0$，而$y=0$的特征$\theta ^T x \ll 0$。Logistic回归就是要学习得到$\theta$，使得正例的特征远大于0，负例的特征远小于0，而且要在全部训练示例上达到这个目标。<br>&emsp;&emsp;接下来，尝试把Logistic回归做个变形。首先，将使用的结果标签$y=0$和$y=1$替换为$y=-1，y=1$，然后将$\theta ^T x=\theta_0 +\theta_1 x_1 +\theta_2 x_2+\cdots+\theta_n x_n (x_0 =1)$中的$\theta _0$替换为b，最后将后面的$\theta_1 x_1 +\theta_2 x_2+\cdots+\theta_n x_n$替换为$w^T x$。如此，则有了$\theta^T x=w^T +b$。也就是说除了$y$由$y=0$变为$y=-1$外，线性分类函数跟Logistic回归的形式化表示$h_\theta (x)=g(\theta ^T X)=g(w^T x+b)$没区别。<br>进一步，可以将假设函数$h_{w,b}=g(w^T +b)$中的$g(z)$做一个简化，将其简单映射到$y=-1$和$y=1$上。映射关系如下：<br>$$<br>g(z)=<br>\begin{cases}<br>1 , &amp; z \geq 0 \\<br>-1, &amp; z&lt;0<br>\end{cases} \tag{1.5}<br>$$</p>
 <h2 id="存在的一些疑问"><a href="#存在的一些疑问" class="headerlink" title="存在的一些疑问"></a>存在的一些疑问</h2><ul>
 <li>什么是凸二次规划问题</li>
 <li>什么是超平面？<blockquote>
