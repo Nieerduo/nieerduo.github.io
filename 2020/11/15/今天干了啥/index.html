@@ -23,7 +23,7 @@
 <meta property="og:description" content="2020&#x2F;11&#x2F;15重要的事情 解决了电脑没声音的问题 电脑配置是ausu TUF GAMING的主板（鲁大师可查），到官网下载对应版本的的驱动，然后安装驱动，安装完成后在电脑上会有Realtek Audio Control软件，在该软件的设备高级设置中将插孔设置下面的&lt;禁用前面板插孔弹出对话&gt;选上。猜测可能是主板的前后弄反了。可以用电脑听歌了~   人工智能的作业有点难不会写，搁置了">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-15T07:23:45.000Z">
-<meta property="article:modified_time" content="2020-11-15T08:11:24.435Z">
+<meta property="article:modified_time" content="2020-11-15T08:34:24.240Z">
 <meta property="article:author" content="两只耳朵呀">
 <meta property="article:tag" content="nieerduo,博客">
 <meta name="twitter:card" content="summary">
@@ -177,6 +177,10 @@
 <li>解决了hexo d -g 出现connect to GITHUB页面的问题<blockquote>
 <p>原因可能是上次提交时是提交到gitee上测试gitee的博客功能的（和github差不多，不过每次提交都要到官网更新，要充钱才能自动部署），测试之后重新提交到github上没有吧_config.yml的仓库地址写对，写成了<code>https://github.com/nieerduo/nieerduo.github.io</code>，实际应该用ssh地址：<code>git@github.com:Nieerduo/Nieerduo.github.io.git</code></p>
 </blockquote>
+</li>
+<li>解决了hexo mathjax公式无法渲染的问题<blockquote>
+<p>公式本地可以渲染，远程却无法渲染。<br>将xxx\node_modules\hexo-renderer-mathjax\mathjax.html<br>中的script标签内http改成https。</p>
+</blockquote>
 <h2 id="杂事"><a href="#杂事" class="headerlink" title="杂事"></a>杂事</h2></li>
 <li>买了柚子和奶茶<blockquote>
 <p>柚子有点酸、奶茶不怎么好喝，里面的东西有点像鼻屎<del>~</del></p>
@@ -184,6 +188,7 @@
 </li>
 <li>听了一些rap<br>靠！真鸡儿好听~</li>
 <li>iphone充电有点烫<br>iphone用了不到一周，没有那么丝滑了，充电发烫有点吓人，今天中午放兜里拿出来的时候也有点烫<del>好怕</del>5399块钱呢！</li>
+<li>写的博客也太丑了</li>
 </ul>
 
     
@@ -329,20 +334,5 @@
   }
 </script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
