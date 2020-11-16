@@ -2516,11 +2516,9 @@ a.back-top:hover i {
 	width: 150px;
 	height: 150px
 }
-/**/
 .box-prev-next {
 	margin-top: 30px;
 	margin-bottom: 100px
-    /*margin-bottom: 70px*/
 }
 
 .box-prev-next a,.box-prev-next .icon {
